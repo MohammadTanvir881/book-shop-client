@@ -8,8 +8,9 @@ import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage";
 import ProductDetailsPage from "./Pages/ProductDetailsPage";
 import DashBoard from "./Pages/DashBoard/DashBoard";
 import RoutesGenerator from "./Pages/DashBoard/RoutesGenerator";
-import { adminPaths } from "./Pages/DashBoard/admin.routes";
+import { adminPaths, userPaths } from "./Pages/DashBoard/admin.routes";
 import UpdateBooks from "./Pages/UpdateBooks";
+import ChangePasswordPage from "./Pages/ChangePasswordPage";
 
 export const router = createBrowserRouter([
   {
@@ -36,12 +37,21 @@ export const router = createBrowserRouter([
     children: RoutesGenerator(adminPaths),
   },
   {
+    path: "/dash-board",
+    element: <DashBoard></DashBoard>,
+    children: RoutesGenerator(userPaths),
+  },
+  {
     path: "/login",
     element: <LoginPage></LoginPage>,
   },
   {
     path: "/product-details/:id",
     element: <ProductDetailsPage></ProductDetailsPage>,
+  },
+  {
+    path: "/change-password/:id",
+    element: <ChangePasswordPage></ChangePasswordPage>,
   },
   {
     path: "/product-update/:id",

@@ -1,4 +1,5 @@
 import { baseApi } from "@/Redux/api/baseApi";
+import { RootState } from "../store";
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -20,7 +21,7 @@ const userApi = baseApi.injectEndpoints({
         url: `/users/block/${userId}`,
         method: "PATCH",
       }),
-      invalidatesTags: (result, error, { userId }) => [
+      invalidatesTags: ({ userId }) => [
         { type: "users", id: userId }, // ✅ Lowercase tag
         "users", // ✅ Invalidate the books list
       ],
@@ -29,6 +30,37 @@ const userApi = baseApi.injectEndpoints({
       query: ({ userId }) => ({
         url: `/users/active/${userId}`,
         method: "PATCH",
+      }),
+      invalidatesTags: ({ userId }) => [
+        { type: "users", id: userId }, // ✅ Lowercase tag
+        "users", // ✅ Invalidate the books list
+      ],
+    }),
+    makeUserToAdmin: builder.mutation({
+      query: ({ userId }) => ({
+        url: `/users/makeAdmin/${userId}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ({ userId }) => [
+        { type: "users", id: userId }, // ✅ Lowercase tag
+        "users", // ✅ Invalidate the books list
+      ],
+    }),
+    makeAdminToUser: builder.mutation({
+      query: ({ userId }) => ({
+        url: `/users/makeUser/${userId}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: (result, error, { userId }) => [
+        { type: "users", id: userId }, // ✅ Lowercase tag
+        "users", // ✅ Invalidate the books list
+      ],
+    }),
+    changePassword: builder.mutation({
+      query: (data) => ({
+        url: "/users/changePassword",
+        method: "POST",
+        body: data,
       }),
       invalidatesTags: (result, error, { userId }) => [
         { type: "users", id: userId }, // ✅ Lowercase tag
@@ -42,4 +74,7 @@ export const {
   useGetAllUsersQuery,
   useDeactivateUserMutation,
   useActivateUserMutation,
+  useMakeUserToAdminMutation,
+  useMakeAdminToUserMutation,
+  useChangePasswordMutation,
 } = userApi;

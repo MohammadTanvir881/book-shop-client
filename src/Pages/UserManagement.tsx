@@ -2,15 +2,17 @@ import {
   useActivateUserMutation,
   useDeactivateUserMutation,
   useGetAllUsersQuery,
+  useMakeAdminToUserMutation,
+  useMakeUserToAdminMutation,
 } from "@/Redux/feature/User/UserApi";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ITEMS_PER_PAGE = 10; // Display 10 books per page
 
 export type TUser = {
   _id: string;
+  name : string;
   email: string;
   role: string;
   createdAt: string;
@@ -22,6 +24,8 @@ const UserManagement = () => {
   const { data } = useGetAllUsersQuery(undefined);
   const [userDeactive] = useDeactivateUserMutation();
   const [userActivate] = useActivateUserMutation();
+  const [makeUserToAdmin] = useMakeUserToAdminMutation();
+  const [makeAdminToUser] = useMakeAdminToUserMutation();
 
   const [currentPage, setCurrentPage] = useState(1);
   console.log(data?.data);
@@ -64,6 +68,49 @@ const UserManagement = () => {
         Swal.fire({
           title: "Activated",
           text: "User is Activated SuccessFully",
+          icon: "success",
+        });
+      }
+    });
+  };
+
+  const handleMakeUserToAdmin = (userId: string) => {
+    Swal.fire({
+      title: "You want to Make Admin this account?",
+      text: "The User Will Be Updated To Admin",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Make Admin",
+    }).then((result) => {
+      userActivate({ userId });
+      makeUserToAdmin({ userId });
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "User is now an admin",
+          text: "User Updated to admin successfully",
+          icon: "success",
+        });
+      }
+    });
+  };
+  const handleMakeAdminToUser = (userId: string) => {
+    Swal.fire({
+      title: "You want to Make User this account?",
+      text: "This Admin Will Be Updated To a User",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Make User",
+    }).then((result) => {
+      userActivate({ userId });
+      makeAdminToUser({ userId });
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "This Admin is now an User",
+          text: "Admin Updated to user successfully",
           icon: "success",
         });
       }
@@ -116,9 +163,21 @@ const UserManagement = () => {
               </td>
 
               <th className="flex flex-col gap-1 md:flex-row lg:flex-row">
-                <button className="btn btn-ghost btn-xs mx-1 bg-green-400 text-white">
-                  Make Admin
-                </button>
+                {user.role === "admin" ? (
+                  <button
+                    onClick={() => handleMakeAdminToUser(user._id)}
+                    className="btn btn-ghost btn-xs mx-1 bg-red-400 text-white"
+                  >
+                    Make User
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handleMakeUserToAdmin(user._id)}
+                    className="btn btn-ghost btn-xs mx-1 bg-green-400 text-white"
+                  >
+                    Make Admin
+                  </button>
+                )}
 
                 {user.isBlocked ? (
                   <button
@@ -135,9 +194,6 @@ const UserManagement = () => {
                     Deactivate
                   </button>
                 )}
-                <button className="btn btn-ghost btn-xs bg-red-400 text-white">
-                  Delete
-                </button>
               </th>
             </tr>
           ))}

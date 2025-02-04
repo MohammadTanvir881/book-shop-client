@@ -19,7 +19,7 @@ const SidebarItems = () => {
 
     let sidebarItems;
 
-    switch (user!.role) {
+    switch (user?.role) {
       case userRole.ADMIN:
         sidebarItems = SidebarItemsGenerator(adminPaths, userRole.ADMIN);
         break;
@@ -37,7 +37,7 @@ const SidebarItems = () => {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          console.log(broken);
+          console.log(broken)
         }}
         onCollapse={(collapsed, type) => {
           console.log(collapsed, type);
