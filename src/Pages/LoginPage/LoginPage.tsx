@@ -5,7 +5,7 @@ import { useAppDispatch } from "@/Redux/feature/hook";
 import { verifyToken } from "@/utils/vertifyToken";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from 'sonner'
+import { toast } from "sonner";
 
 // Define the form data type
 type LoginFormData = {
@@ -40,10 +40,10 @@ const LoginPage = () => {
       console.log("User", user);
 
       dispatch(setUser({ user: user, token: res.data.token }));
-      toast.success("Login Successful")
+      toast.success("Login Successful");
       navigate("/");
-    } catch (error) {
-        toast.error("Something went wrong")
+    } catch (error: any) {
+      toast.error(error.data.message || "Something went wrong");
     }
   };
 
@@ -110,7 +110,12 @@ const LoginPage = () => {
           >
             Login
           </button>
-          <p className="pt-3">First time here? <Link to="/registration" className="text-blue-400">Registration now</Link></p>
+          <p className="pt-3">
+            First time here?{" "}
+            <Link to="/registration" className="text-blue-400">
+              Registration now
+            </Link>
+          </p>
         </form>
       </div>
     </div>

@@ -1,6 +1,11 @@
-import { useGetAllUsersQuery } from "@/Redux/feature/User/UserApi";
+import {
+  useActivateUserMutation,
+  useDeactivateUserMutation,
+  useGetAllUsersQuery,
+} from "@/Redux/feature/User/UserApi";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ITEMS_PER_PAGE = 10; // Display 10 books per page
 
@@ -15,12 +20,55 @@ export type TUser = {
 
 const UserManagement = () => {
   const { data } = useGetAllUsersQuery(undefined);
+  const [userDeactive] = useDeactivateUserMutation();
+  const [userActivate] = useActivateUserMutation();
 
   const [currentPage, setCurrentPage] = useState(1);
   console.log(data?.data);
   if (!data || !data?.data) {
     return <p>Loading...</p>;
   }
+
+  const handleDeactivateUser = (userId: string) => {
+    Swal.fire({
+      title: "You want to Deactivate this account?",
+      text: "This user Will Be Deactivated",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Deactivate",
+    }).then((result) => {
+      userDeactive({ userId });
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deactivated",
+          text: "User is Deactivated SuccessFully",
+          icon: "success",
+        });
+      }
+    });
+  };
+  const handleActivateUser = (userId: string) => {
+    Swal.fire({
+      title: "You want to Activate this account?",
+      text: "This user Will Be Activated",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Activate",
+    }).then((result) => {
+      userActivate({ userId });
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Activated",
+          text: "User is Activated SuccessFully",
+          icon: "success",
+        });
+      }
+    });
+  };
 
   const totalItems = data.data.length;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
@@ -62,9 +110,9 @@ const UserManagement = () => {
                 {user.role}
               </td>
               <td
-                className={user.isBlocked ? "Text-red-500" : "text-green-500"}
+                className={user.isBlocked ? "text-red-500" : "text-green-500"}
               >
-                {user.isBlocked ? "De-active" : "Active"}
+                {user.isBlocked ? "Deactivated" : "Active"}
               </td>
 
               <th className="flex flex-col gap-1 md:flex-row lg:flex-row">
@@ -72,9 +120,21 @@ const UserManagement = () => {
                   Make Admin
                 </button>
 
-                <button className="btn btn-ghost btn-xs bg-blue-400 text-white">
-                  Deactivate
-                </button>
+                {user.isBlocked ? (
+                  <button
+                    onClick={() => handleActivateUser(user._id)}
+                    className="btn btn-ghost btn-xs bg-yellow-400 text-white"
+                  >
+                    Activate
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handleDeactivateUser(user._id)}
+                    className="btn btn-ghost btn-xs bg-blue-400 text-white"
+                  >
+                    Deactivate
+                  </button>
+                )}
                 <button className="btn btn-ghost btn-xs bg-red-400 text-white">
                   Delete
                 </button>

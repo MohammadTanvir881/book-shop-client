@@ -15,18 +15,31 @@ const userApi = baseApi.injectEndpoints({
       providesTags: ["users"],
     }),
 
-    updateProduct: builder.mutation({
-      query: ({ productId, updatedData }) => ({
-        url: `/products/${productId}`,
-        method: "PUT",
-        body: updatedData,
+    deactivateUser: builder.mutation({
+      query: ({ userId }) => ({
+        url: `/users/block/${userId}`,
+        method: "PATCH",
       }),
-      invalidatesTags: (result, error, { productId }) => [
-        { type: "books", id: productId }, // ✅ Lowercase tag
-        "books", // ✅ Invalidate the books list
+      invalidatesTags: (result, error, { userId }) => [
+        { type: "users", id: userId }, // ✅ Lowercase tag
+        "users", // ✅ Invalidate the books list
+      ],
+    }),
+    activateUser: builder.mutation({
+      query: ({ userId }) => ({
+        url: `/users/active/${userId}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: (result, error, { userId }) => [
+        { type: "users", id: userId }, // ✅ Lowercase tag
+        "users", // ✅ Invalidate the books list
       ],
     }),
   }),
 });
 
-export const { useGetAllUsersQuery } = userApi;
+export const {
+  useGetAllUsersQuery,
+  useDeactivateUserMutation,
+  useActivateUserMutation,
+} = userApi;
