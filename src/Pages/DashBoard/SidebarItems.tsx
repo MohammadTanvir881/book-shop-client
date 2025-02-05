@@ -1,9 +1,10 @@
 import { Button, Layout, Menu } from 'antd';
 import { useAppSelector } from '@/Redux/feature/hook';
-import { useCurrentUser } from '@/Redux/feature/Auth/authSlice';
+import { TUser, useCurrentToken, useCurrentUser } from '@/Redux/feature/Auth/authSlice';
 import SidebarItemsGenerator from './SidebarItemGenerator';
 import { adminPaths, userPaths } from './admin.routes';
 import { Link } from 'react-router-dom';
+import { verifyToken } from '@/utils/vertifyToken';
 
 
 const { Sider } = Layout;
@@ -14,12 +15,15 @@ const userRole = {
 
 const SidebarItems = () => {
 
-    const user = useAppSelector(useCurrentUser);
-    console.log(user)
+  const token = useAppSelector(useCurrentToken);
+  let user;
+  if (token) {
+    user = verifyToken(token);
+  }
 
     let sidebarItems;
 
-    switch (user?.role) {
+    switch ((user as TUser)?.role) {
       case userRole.ADMIN:
         sidebarItems = SidebarItemsGenerator(adminPaths, userRole.ADMIN);
         break;

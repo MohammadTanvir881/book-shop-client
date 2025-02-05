@@ -1,3 +1,4 @@
+import AboutSection from "./AboutSection/AboutSection";
 import Slider from "./Banner/slider";
 import FeaturedProducts from "./FeaturedProducts/FeaturedProducts";
 
@@ -8,6 +9,7 @@ const HomePage = () => {
         <div>
            <Slider></Slider>
            <FeaturedProducts></FeaturedProducts>
+           <AboutSection></AboutSection>
            
         </div>
     );

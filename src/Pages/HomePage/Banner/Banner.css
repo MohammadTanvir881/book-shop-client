@@ -1,19 +1,19 @@
 
 .slide1{
-    background: url('book1.jpg');
+    background: url('../../../assets/book1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
 }
 .slide2{
-    background: url('book2.jpg');
+    background: url('../../../assets/book2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
     opacity: 1.5;
 }
 .slide3{
-    background: url('book3.png');
+    background: url('../../../assets/book3.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;

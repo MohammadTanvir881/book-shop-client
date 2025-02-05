@@ -31,7 +31,9 @@ const DashBoard = () => {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          Book shop ©{new Date().getFullYear()} Developed by Md. Tanvir Rashid <br />
+          Department Of Physics <br />
+          Jashore university of Science And Technology
         </Footer>
       </Layout>
     </Layout>
