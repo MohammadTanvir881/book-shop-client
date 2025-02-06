@@ -1,6 +1,6 @@
 import Navbar from "@/Navbar/Navbar";
 import { useGetSingleProductQuery } from "@/Redux/feature/Products/productApi";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { TCard } from "./HomePage/FeaturedProducts/FeaturedProducts";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useAppSelector } from "@/Redux/feature/hook";
@@ -11,6 +11,7 @@ import Footer from "./Footer/Footer";
 const CheckOutPage = () => {
   const { id } = useParams();
   const user = useAppSelector(useCurrentUser);
+  const navigate = useNavigate();
   const [addOrder] = useAddOrderMutation();
   //   console.log("current user", user);
   const {
@@ -20,13 +21,13 @@ const CheckOutPage = () => {
   } = useForm();
   const { data, isLoading } = useGetSingleProductQuery(id);
   const product = data?.res;
-  if (isLoading) {
-    return (
-      <div className="h-[100vh] flex justify-center items-center">
-        <span className="loading loading-ring loading-lg"></span>;
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="h-[100vh] flex justify-center items-center">
+  //       <span className="loading loading-ring loading-lg"></span>;
+  //     </div>
+  //   );
+  // }
   //   console.log(product);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -45,6 +46,7 @@ const CheckOutPage = () => {
       .unwrap()
       .then((result: any) => {
         window.location.replace(result.url);
+
         console.log(result);
       })
       .catch((error) => {
