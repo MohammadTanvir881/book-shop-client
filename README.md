@@ -1,50 +1,121 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Book shop Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Overview
 
-## Expanding the ESLint configuration
+This project is a responsive bicycle e-commerce platform that allows users to browse bicycles, register accounts, place orders, and make payments. The platform features role-based authentication for users and admins, product management, order tracking, and payment integration.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Features
 
-- Configure the top-level `parserOptions` property like this:
+Frontend
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+User Registration & Authentication
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Role-based authentication (User & Admin)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Secure user registration and login with JWT authentication
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Routing & Pages
+
+Public Routes:
+
+Home Page: Overview of the platform
+
+All Products Page: Displays all available bicycles with sorting and filtering options
+
+Product Details Page: Detailed view of a specific bicycle
+
+About Us Page: Information about the platform/company
+
+Private Routes:
+
+Checkout Page: Only accessible to authenticated users
+
+Dashboard (Role-Based Access):
+
+User Role: View order history and account details
+
+Admin Role: Manage products, view orders, and oversee platform activities
+
+UI/UX Design
+
+Fully responsive and mobile-friendly design
+
+User-friendly navigation and clean interface
+
+Built according to the provided Figma design
+
+Backend (Module Pattern)
+
+Database (MongoDB)
+
+Users (Roles: User, Admin)
+
+Products (Attributes: name, brand, price, model, stock, etc.)
+
+Orders (Linked to user, product details, total price, status)
+
+Authentication
+
+User registration and login with JWT token management
+
+Secure password hashing
+
+Logout functionality
+
+Product Management
+
+CRUD operations for bicycles (Create, Read, Update, Delete)
+
+Order Management
+
+CRUD operations for orders
+
+Ensure stock levels before processing orders
+
+Payment Integration
+
+ SSLCommerz
+
+Error Handling
+
+Consistent, user-friendly error messages for issues like invalid login, out-of-stock products, etc.
+
+Additional Backend Features
+
+API pagination for product listings and order retrieval
+
+Authentication middleware to protect private routes
+
+Tech Stack
+
+Frontend:
+
+React.js (with React Router)
+
+Tailwind CSS / Bootstrap (for styling)
+
+Redux / Context API (for state management)
+
+Backend:
+
+Node.js (Express.js)
+
+MongoDB (Mongoose ODM)
+
+JWT (for authentication)
+
+bcrypt (for password hashing)
+
+Deployment:
+
+Frontend: Vercel / Netlify
+
+Backend: Vercel 
+
+Database: MongoDB Atlas
+
+
+
+
