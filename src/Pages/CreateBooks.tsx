@@ -1,4 +1,5 @@
 import { useAddProductMutation } from "@/Redux/feature/Products/productApi";
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -7,6 +8,7 @@ type BookFormFields = {
   title: string;
   author: string;
   file: FileList;
+  bookImage: string;
   price: number;
   category: string;
   description: string;
@@ -19,13 +21,15 @@ const BookForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm<BookFormFields>(); // Using defined type
+
+  const [imageUrl, setImageUrl] = useState("");
 
   const [addProduct, error] = useAddProductMutation();
   console.log(error);
 
-  const onSubmit: SubmitHandler<BookFormFields> = (data) => {
+  const onSubmit: SubmitHandler<BookFormFields> = async (data) => {
     const loadingToast = toast.loading("Creating...", { duration: 2000 });
     console.log(data.file);
     // Check if file is selected
@@ -33,30 +37,61 @@ const BookForm = () => {
       console.error("File is required");
       return; // Exit if file is not selected
     }
-    data.price = Number(data.price);
-    data.quantity = Number(data.quantity);
-    data.inStock = Boolean(data.inStock);
+    console.log(data);
+
+    const file = data.file[0];
+    if (!file) {
+      return;
+    }
+    console.log(file);
+
     const formData = new FormData();
+    formData.append("file", file); // Append the file
+    formData.append("upload_preset", "tanvir-rashid"); // Use your upload preset
 
-     console.log(data)
-    formData.append("file", data.file[0]);
-    formData.append("data", JSON.stringify(data));
+    try {
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${
+          import.meta.env.VITE_CLOUDINARY_NAME
+        }/image/upload`, // Replace with your Cloudinary cloud name
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
-    console.log(Object.fromEntries(formData))
-    
-    addProduct(formData)
-      .unwrap()
-      .then((response) => {
-        console.log("Product added successfully", response);
-        toast.success("Books Created Successfully")
-        toast.dismiss(loadingToast);
-        reset()
-      })
-      .catch((err) => {
-        console.error("Error adding product", err);
-      });
-   
-      
+      const cloudinaryData = await response.json();
+      if (!cloudinaryData.secure_url) {
+        throw new Error("Image upload failed");
+      }
+      console.log("Uploaded Image URL:", cloudinaryData.secure_url);
+
+      data.price = Number(data.price);
+      data.quantity = Number(data.quantity);
+      data.inStock = Boolean(data.inStock);
+      data.bookImage = cloudinaryData.secure_url;
+
+      console.log("data" , JSON.stringify(data));
+      // const bookData = JSON.stringify(data)
+      // formData.append("file", data.file[0]);
+      // formData.append("data", JSON.stringify(data));
+
+      // console.log(Object.fromEntries(formData));
+
+      addProduct(data)
+        .unwrap()
+        .then((response) => {
+          console.log("Product added successfully", response);
+          toast.success("Books Created Successfully");
+          toast.dismiss(loadingToast);
+          reset();
+        })
+        .catch((err) => {
+          console.error("Error adding product", err);
+        });
+    } catch (error) {
+      console.error("Upload failed:", error);
+    }
   };
 
   return (
