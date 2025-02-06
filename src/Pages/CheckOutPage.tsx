@@ -46,7 +46,6 @@ const CheckOutPage = () => {
       .unwrap()
       .then((result: any) => {
         window.location.replace(result.url);
-
         console.log(result);
       })
       .catch((error) => {
