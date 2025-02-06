@@ -40,7 +40,11 @@ const AllProductPage = () => {
 
   // Loading state
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-[100vh] flex justify-center items-center">
+        <span className="loading loading-ring loading-lg"></span>;
+      </div>
+    );
   }
 
   // Error handling state
@@ -48,87 +52,91 @@ const AllProductPage = () => {
     return <div>Error loading products!</div>;
   }
 
-
-
   return (
     <div>
-    {/* Search Bar */}
-    <div className="flex justify-center my-5">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex items-center bg-white shadow-md rounded-lg p-2 w-80"
-      >
-        <input
-          {...register("search")}
-          type="text"
-          placeholder="Search..."
-          className="flex-1 px-4 py-2 text-gray-700 focus:outline-none"
-        />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+      {/* Search Bar */}
+      <div className="flex justify-center my-5">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex items-center bg-white shadow-md rounded-lg p-2 w-80"
         >
-          Search
-        </button>
-      </form>
-    </div>
+          <input
+            {...register("search")}
+            type="text"
+            placeholder="Search..."
+            className="flex-1 px-4 py-2 text-gray-700 focus:outline-none"
+          />
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          >
+            Search
+          </button>
+        </form>
+      </div>
 
-    {/* Product List */}
-    <div className="flex justify-center">
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-20 md:gap-10 mx-3 lg:mx-10">
-        {currentData?.map((card: TCard) => (
-          <div key={card._id} className="card card-compact bg-base-100  shadow-xl">
-            <figure className="h-56">
-              <img src={card.bookImage} alt={card.title} />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{card.title}</h2>
-              <h4 className="text-xl text-blue-400">Author : {card.author}</h4>
-              <p className="text-lg">{card.description}</p>
-              <p className="text-lg">Category : {card.category}</p>
-              <p className="text-lg">
-                Price: <span className="text-red-500">{card.price}</span> BDT
-              </p>
-              <p className="text-lg">
-                In-Stock: {card.inStock ? "YES" : "NO"}
-              </p>
-              <p className="text-lg">
-                Quantity Available: <span className="text-green-500">{card.quantity}</span>
-              </p>
-              <div className="card-actions justify-end">
-                <Link to={`/product-details/${card._id}`}>
-                  <button className="btn bg-green-500 text-white hover:bg-green-400">
-                    View Details
-                  </button>
-                </Link>
+      {/* Product List */}
+      <div className="flex justify-center">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-20 md:gap-10 mx-3 lg:mx-10">
+          {currentData?.map((card: TCard) => (
+            <div
+              key={card._id}
+              className="card card-compact bg-base-100  shadow-xl"
+            >
+              <figure className="h-56">
+                <img src={card.bookImage} alt={card.title} />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{card.title}</h2>
+                <h4 className="text-xl text-blue-400">
+                  Author : {card.author}
+                </h4>
+                <p className="text-lg">{card.description}</p>
+                <p className="text-lg">Category : {card.category}</p>
+                <p className="text-lg">
+                  Price: <span className="text-red-500">{card.price}</span> BDT
+                </p>
+                <p className="text-lg">
+                  In-Stock: {card.inStock ? "YES" : "NO"}
+                </p>
+                <p className="text-lg">
+                  Quantity Available:{" "}
+                  <span className="text-green-500">{card.quantity}</span>
+                </p>
+                <div className="card-actions justify-end">
+                  <Link to={`/product-details/${card._id}`}>
+                    <button className="btn bg-green-500 text-white hover:bg-green-400">
+                      View Details
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center my-5 space-x-4">
+        <button
+          onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
+          disabled={currentPage === 1}
+          className="px-4 py-2 bg-gray-300 rounded-lg disabled:opacity-50"
+        >
+          Previous
+        </button>
+        <span className="px-4 py-2 bg-gray-200 rounded-lg">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
+          disabled={currentPage === totalPages}
+          className="px-4 py-2 bg-gray-300 rounded-lg disabled:opacity-50"
+        >
+          Next
+        </button>
       </div>
     </div>
-
-    {/* Pagination Controls */}
-    <div className="flex justify-center my-5 space-x-4">
-      <button
-        onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
-        disabled={currentPage === 1}
-        className="px-4 py-2 bg-gray-300 rounded-lg disabled:opacity-50"
-      >
-        Previous
-      </button>
-      <span className="px-4 py-2 bg-gray-200 rounded-lg">
-        Page {currentPage} of {totalPages}
-      </span>
-      <button
-        onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
-        disabled={currentPage === totalPages}
-        className="px-4 py-2 bg-gray-300 rounded-lg disabled:opacity-50"
-      >
-        Next
-      </button>
-    </div>
-  </div>
   );
 };
 

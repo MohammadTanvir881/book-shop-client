@@ -12,7 +12,9 @@ const ProductDetailsPage = () => {
   console.log(product);
 
   if (isLoading) {
-    return <p>loading...</p>;
+    return <div className="h-[100vh] flex justify-center items-center">
+      <span className="loading loading-ring loading-lg"></span>;
+    </div>
   }
 
   return (
@@ -90,13 +92,13 @@ const ProductDetailsPage = () => {
                 <div className="flex flex-col md:flex-row gap-3 mt-4 ">
                   <Link to="/">
                     {" "}
-                    <button className="btn btn-outline px-5 text-blue-500 bg-blue-50">
+                    <button className="btn btn-outline w-full px-5 text-blue-500 bg-blue-50">
                       Return Home
                     </button>
                   </Link>
 
                   <Link to={`/check-out/${p._id}`}>
-                    <button className="btn btn-outline px-5 text-amber-500 bg-amber-50">
+                    <button className="btn btn-outline px-5 w-full text-amber-500 bg-amber-50">
                       Buy Now
                     </button>
                   </Link>

@@ -1,6 +1,6 @@
 import { Button, Layout, Menu } from 'antd';
 import { useAppSelector } from '@/Redux/feature/hook';
-import { TUser, useCurrentToken, useCurrentUser } from '@/Redux/feature/Auth/authSlice';
+import { TUser, useCurrentToken} from '@/Redux/feature/Auth/authSlice';
 import SidebarItemsGenerator from './SidebarItemGenerator';
 import { adminPaths, userPaths } from './admin.routes';
 import { Link } from 'react-router-dom';

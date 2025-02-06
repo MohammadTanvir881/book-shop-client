@@ -1,5 +1,4 @@
 import { useAddProductMutation } from "@/Redux/feature/Products/productApi";
-import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -24,7 +23,6 @@ const BookForm = () => {
     reset,
   } = useForm<BookFormFields>(); // Using defined type
 
-  const [imageUrl, setImageUrl] = useState("");
 
   const [addProduct, error] = useAddProductMutation();
   console.log(error);

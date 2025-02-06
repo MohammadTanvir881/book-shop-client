@@ -25,6 +25,14 @@ const UpdateBooks = () => {
   console.log(id);
   const { data: product, isLoading } = useGetSingleProductQuery(id);
 
+  if (isLoading) {
+    return (
+      <div className="h-[100vh] flex justify-center items-center">
+        <span className="loading loading-ring loading-lg"></span>;
+      </div>
+    );
+  }
+
   const productDetails: TCard = product?.res[0];
   console.log(productDetails);
 
@@ -34,10 +42,9 @@ const UpdateBooks = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<BookFormFields>(); // Using defined type
 
-  const [updateProduct, { isLoading: isUpdating }] = useUpdateProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
 
   const onSubmit: SubmitHandler<BookFormFields> = async (data) => {
     // const loadingToast = toast.loading("Creating...", { duration: 2000 });

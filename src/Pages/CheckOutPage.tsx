@@ -21,7 +21,11 @@ const CheckOutPage = () => {
   const { data, isLoading } = useGetSingleProductQuery(id);
   const product = data?.res;
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="h-[100vh] flex justify-center items-center">
+        <span className="loading loading-ring loading-lg"></span>;
+      </div>
+    );
   }
   //   console.log(product);
 
@@ -156,9 +160,9 @@ const CheckOutPage = () => {
                   })}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
-                {errors.quantity && (
+                {errors.address && (
                   <span className="text-red-500 text-sm">
-                    {errors.quantity.message as string}
+                    {errors.address.message as string}
                   </span>
                 )}
               </div>
@@ -178,9 +182,9 @@ const CheckOutPage = () => {
                   })}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
-                {errors.quantity && (
+                {errors.phone && (
                   <span className="text-red-500 text-sm">
-                    {errors.quantity.message as string}
+                    {errors.phone.message as string}
                   </span>
                 )}
               </div>
@@ -219,9 +223,9 @@ const CheckOutPage = () => {
           </div>
         </div>
       </div>
-     <div className="mt-5">
-     <Footer></Footer>
-     </div>
+      <div className="mt-5">
+        <Footer></Footer>
+      </div>
     </div>
   );
 };

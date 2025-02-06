@@ -1,5 +1,4 @@
 import { baseApi } from "@/Redux/api/baseApi";
-import { RootState } from "../store";
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
