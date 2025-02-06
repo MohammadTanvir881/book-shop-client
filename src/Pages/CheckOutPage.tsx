@@ -21,13 +21,13 @@ const CheckOutPage = () => {
   } = useForm();
   const { data, isLoading } = useGetSingleProductQuery(id);
   const product = data?.res;
-  // if (isLoading) {
-  //   return (
-  //     <div className="h-[100vh] flex justify-center items-center">
-  //       <span className="loading loading-ring loading-lg"></span>;
-  //     </div>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <div className="h-[100vh] flex justify-center items-center">
+        <span className="loading loading-ring loading-lg"></span>
+      </div>
+    );
+  }
   //   console.log(product);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {

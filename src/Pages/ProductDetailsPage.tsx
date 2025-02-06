@@ -13,7 +13,7 @@ const ProductDetailsPage = () => {
 
   if (isLoading) {
     return <div className="h-[100vh] flex justify-center items-center">
-      <span className="loading loading-ring loading-lg"></span>;
+      <span className="loading loading-ring loading-lg"></span>
     </div>
   }
 
