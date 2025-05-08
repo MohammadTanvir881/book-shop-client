@@ -1,4 +1,3 @@
-import Navbar from "@/Navbar/Navbar";
 import { useLoginMutation } from "@/Redux/feature/Auth/authApi";
 import { setUser } from "@/Redux/feature/Auth/authSlice";
 import { useAppDispatch } from "@/Redux/feature/hook";
@@ -21,6 +20,7 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<LoginFormData>();
 
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
@@ -41,6 +41,18 @@ const LoginPage = () => {
     }
   };
 
+  // Function to fill demo credentials
+  const fillDemoCredentials = (role: 'admin' | 'user') => {
+    if (role === 'admin') {
+      setValue('email', 'admin@gmail.com');
+      setValue('password', '12345678');
+    } else {
+      setValue('email', 'user@gmail.com');
+      setValue('password', '12345678');
+    }
+    toast.info(`Demo ${role} credentials filled`);
+  };
+
   return (
     <div className="min-h-screen relative">
       {/* Background Image with Overlay */}
@@ -48,8 +60,6 @@ const LoginPage = () => {
         <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
       </div>
 
-      {/* <Navbar /> */}
-      
       <div className="relative flex items-center justify-center p-4 md:p-8 h-[calc(100vh-80px)]">
         <div className="w-full max-w-md">
           {/* Transparent Form Card */}
@@ -62,6 +72,30 @@ const LoginPage = () => {
 
             {/* Form Body */}
             <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-5">
+              {/* Demo Credentials Buttons */}
+              <div className="flex space-x-2">
+                <button
+                  type="button"
+                  onClick={() => fillDemoCredentials('admin')}
+                  className="flex-1 bg-gradient-to-r from-purple-500 to-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:from-purple-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 transition-all text-sm"
+                >
+                  Admin Demo
+                </button>
+                <button
+                  type="button"
+                  onClick={() => fillDemoCredentials('user')}
+                  className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-2 px-4 rounded-lg font-medium hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 transition-all text-sm"
+                >
+                  User Demo
+                </button>
+              </div>
+
+              <div className="relative flex items-center py-2">
+                <div className="flex-grow border-t border-white/20"></div>
+                <span className="flex-shrink mx-4 text-white/50 text-sm">OR</span>
+                <div className="flex-grow border-t border-white/20"></div>
+              </div>
+
               {/* Email Field */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-white mb-1">
