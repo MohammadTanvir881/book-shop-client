@@ -5,8 +5,11 @@ import Footer from "./Footer/Footer";
 const MainPage = () => {
   return (
     <div>
-      <div className="container mx-auto px-2">
-        <Navbar></Navbar>
+      <div className="container mx-auto px-2 relative">
+        <div className="sticky top-0 z-50">
+          {" "}
+          <Navbar></Navbar>
+        </div>
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

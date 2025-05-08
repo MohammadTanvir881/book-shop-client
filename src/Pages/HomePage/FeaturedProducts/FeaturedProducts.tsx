@@ -35,7 +35,7 @@ const FeaturedProducts = () => {
     );
   }
 
-  const firstSixCards = data?.res?.slice(0, 6);
+  const firstSixCards = data?.res?.slice(0, 8);
 
   return (
     <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
@@ -51,7 +51,7 @@ const FeaturedProducts = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-green-400 to-green-600 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {firstSixCards?.map((card: TCard) => (
             <div
               key={card._id}
@@ -166,7 +166,7 @@ const FeaturedProducts = () => {
         <div className="text-center mt-16">
           <Link
             to="/all-product"
-            className="inline-flex items-center px-8 py-3 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center px-8 py-3 bg-green-500 text-white font-medium rounded-lg hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Explore All Products
             <svg

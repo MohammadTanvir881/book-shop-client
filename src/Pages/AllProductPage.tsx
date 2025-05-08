@@ -65,7 +65,7 @@ const AllProductPage = () => {
           />
           <button
             type="submit"
-            className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 py-2 md:px-6 md:py-3 rounded-r-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 flex items-center"
+            className="bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-2 md:px-6 md:py-3 rounded-r-full hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +180,7 @@ const AllProductPage = () => {
                     to={`/product-details/${card._id}`}
                     className="block w-full"
                   >
-                    <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium py-1.5 sm:py-2 px-3 sm:px-4 rounded-md sm:rounded-lg transition-all duration-300 flex items-center justify-center text-xs sm:text-sm">
+                    <button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium py-1.5 sm:py-2 px-3 sm:px-4 rounded-md sm:rounded-lg transition-all duration-300 flex items-center justify-center text-xs sm:text-sm">
                       View Details
                       <svg
                         className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2"

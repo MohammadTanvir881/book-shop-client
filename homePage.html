@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHaven - Your Literary Paradise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10B981', // green-500
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+    <!-- 1. Sticky Navbar -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-primary">
+                    <span class="text-gray-900">Book</span>Haven
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-900 hover:text-primary transition">Home</a>
+                    <a href="#" class="text-gray-900 hover:text-primary transition">Books</a>
+                    <a href="#" class="text-gray-900 hover:text-primary transition">Categories</a>
+                    <a href="#" class="text-gray-900 hover:text-primary transition">Authors</a>
+                    <a href="#" class="text-gray-900 hover:text-primary transition">About</a>
+                </nav>
+
+                <!-- Right Side Icons -->
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center space-x-4">
+                        <button class="px-4 py-2 text-gray-900 hover:text-primary transition">Login</button>
+                        <button class="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-600 transition">Sign Up</button>
+                    </div>
+                    <a href="#" class="p-2 text-gray-700 hover:text-primary transition relative">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </a>
+                    <button class="md:hidden p-2 text-gray-700 hover:text-primary transition">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Carousel -->
+    <section class="relative bg-gradient-to-r from-green-50 to-gray-100">
+        <div class="container mx-auto px-4 py-12 md:py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Discover Your Next Favorite Read</h1>
+                    <p class="text-lg text-gray-600 mb-6">Explore our curated collection of bestsellers, classics, and hidden gems</p>
+                    <button class="px-8 py-3 bg-primary text-white rounded-md hover:bg-green-600 transition font-medium">Browse Books</button>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Book Collection" class="rounded-lg shadow-md w-full transform rotate-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Featured Categories -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10">Browse by Genre</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Fiction -->
+                <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition h-48">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Fiction" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex flex-col items-center justify-end p-4">
+                        <h3 class="text-white text-xl font-bold mb-2">Fiction</h3>
+                        <button class="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-600 transition opacity-0 group-hover:opacity-100">Explore</button>
+                    </div>
+                </div>
+                <!-- Mystery -->
+                <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition h-48">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+                    <img src="https://images.unsplash.com/photo-1629992101753-56d196c8aabb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mystery" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex flex-col items-center justify-end p-4">
+                        <h3 class="text-white text-xl font-bold mb-2">Mystery</h3>
+                        <button class="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-600 transition opacity-0 group-hover:opacity-100">Explore</button>
+                    </div>
+                </div>
+                <!-- Science Fiction -->
+                <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition h-48">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80" alt="Sci-Fi" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex flex-col items-center justify-end p-4">
+                        <h3 class="text-white text-xl font-bold mb-2">Sci-Fi</h3>
+                        <button class="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-600 transition opacity-0 group-hover:opacity-100">Explore</button>
+                    </div>
+                </div>
+                <!-- Biography -->
+                <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition h-48">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Biography" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex flex-col items-center justify-end p-4">
+                        <h3 class="text-white text-xl font-bold mb-2">Biography</h3>
+                        <button class="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-600 transition opacity-0 group-hover:opacity-100">Explore</button>
+                    </div>
+                </div>
+                <!-- History -->
+                <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition h-48">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+                    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="History" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex flex-col items-center justify-end p-4">
+                        <h3 class="text-white text-xl font-bold mb-2">History</h3>
+                        <button class="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-600 transition opacity-0 group-hover:opacity-100">Explore</button>
+                    </div>
+                </div>
+                <!-- Children -->
+                <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition h-48">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80" alt="Children" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex flex-col items-center justify-end p-4">
+                        <h3 class="text-white text-xl font-bold mb-2">Children</h3>
+                        <button class="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-600 transition opacity-0 group-hover:opacity-100">Explore</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Featured Books -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-bold">New Releases</h2>
+                <a href="/all-books" class="text-primary hover:text-green-600 transition font-medium">View All Books →</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Book 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Book Cover" class="w-full h-64 object-cover">
+                        <div class="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded">New</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">The Midnight Library</h3>
+                        <p class="text-gray-600 text-sm mb-2">By Matt Haig</p>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(1,242)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-gray-900">$14.99</span>
+                            <button class="px-3 py-1 bg-primary text-white rounded-md hover:bg-green-600 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Book 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80" alt="Book Cover" class="w-full h-64 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">Bestseller</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">Atomic Habits</h3>
+                        <p class="text-gray-600 text-sm mb-2">By James Clear</p>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(3,587)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 line-through mr-2">$19.99</span>
+                                <span class="text-xl font-bold text-gray-900">$12.99</span>
+                            </div>
+                            <button class="px-3 py-1 bg-primary text-white rounded-md hover:bg-green-600 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Book 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1">
+                    <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Book Cover" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">To Kill a Mockingbird</h3>
+                        <p class="text-gray-600 text-sm mb-2">By Harper Lee</p>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(8,742)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-gray-900">$9.99</span>
+                            <button class="px-3 py-1 bg-primary text-white rounded-md hover:bg-green-600 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Book 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1">
+                    <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Book Cover" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">The Silent Patient</h3>
+                        <p class="text-gray-600 text-sm mb-2">By Alex Michaelides</p>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(2,156)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-gray-900">$16.49</span>
+                            <button class="px-3 py-1 bg-primary text-white rounded-md hover:bg-green-600 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Special Offers -->
+    <section class="py-12 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Summer Reading Sale - Up to 40% Off!</h2>
+            <p class="text-xl mb-6">Limited time offer. Use code: <span class="font-bold">READMORE</span> at checkout</p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <div class="bg-white bg-opacity-20 rounded-lg p-3 text-center">
+                    <span class="text-2xl font-bold block">05</span>
+                    <span class="text-sm">Days</span>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg p-3 text-center">
+                    <span class="text-2xl font-bold block">08</span>
+                    <span class="text-sm">Hours</span>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg p-3 text-center">
+                    <span class="text-2xl font-bold block">22</span>
+                    <span class="text-sm">Minutes</span>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg p-3 text-center">
+                    <span class="text-2xl font-bold block">45</span>
+                    <span class="text-sm">Seconds</span>
+                </div>
+            </div>
+            <button class="px-8 py-3 bg-white text-primary rounded-md hover:bg-gray-100 transition font-medium">Shop the Sale</button>
+        </div>
+    </section>
+
+    <!-- 6. Author Spotlight -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10">Author Spotlight</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8 bg-gray-50 rounded-lg p-8">
+                <div class="md:w-1/3">
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="Author" class="w-full rounded-lg shadow-md">
+                </div>
+                <div class="md:w-2/3">
+                    <h3 class="text-2xl font-bold mb-2">Featured Author: John Green</h3>
+                    <p class="text-gray-600 mb-4">Bestselling author of "The Fault in Our Stars" and "Looking for Alaska"</p>
+                    <p class="text-gray-700 mb-6">"John Green's novels have captivated millions of readers worldwide with their poignant storytelling and authentic characters. His latest work, 'Turtles All the Way Down,' explores themes of mental health with his signature blend of humor and heart."</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-600 transition">View Books</a>
+                        <a href="#" class="px-4 py-2 border border-primary text-primary rounded-md hover:bg-green-50 transition">Read Biography</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Book Club -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <h2 class="text-3xl font-bold mb-4">Join Our Book Club</h2>
+                        <p class="text-gray-600 mb-6">Get exclusive access to author Q&As, monthly book picks, and member-only discounts. Plus, receive a free book when you join!</p>
+                        <form class="space-y-4">
+                            <div>
+                                <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Email Address" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-primary text-white rounded-md hover:bg-green-600 transition font-medium">Sign Up Now</button>
+                        </form>
+                    </div>
+                    <div class="md:w-1/2 bg-green-100 flex items-center justify-center p-8">
+                        <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Book Club" class="rounded-lg shadow-md max-h-96">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Newsletter Signup -->
+    <section class="py-12 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated on New Releases</h2>
+            <p class="text-xl mb-6 max-w-2xl mx-auto">Subscribe to our newsletter for book recommendations, author events, and exclusive offers.</p>
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-md focus:outline-none text-gray-900">
+                <button type="submit" class="px-6 py-3 bg-green-700 hover:bg-green-800 rounded-r-md transition font-medium">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 9. Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About BookHaven</h3>
+                    <p class="text-gray-400 mb-4">Your independent bookstore since 1995. We're passionate about connecting readers with great books.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-goodreads"></i></a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">New Releases</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Bestsellers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Award Winners</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Staff Picks</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <!-- Customer Service -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping Information</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Returns Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Store Locations</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <address class="text-gray-400 not-italic">
+                        <p class="mb-2">123 Book Street, Literary City</p>
+                        <p class="mb-2">Phone: (123) 456-7890</p>
+                        <p class="mb-2">Email: hello@bookhaven.com</p>
+                        <p class="mt-4">Open: Mon-Sat 9am-8pm</p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 BookHaven. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-sm">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

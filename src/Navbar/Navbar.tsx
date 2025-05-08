@@ -56,10 +56,21 @@ const Navbar = () => {
         }
       >
         <li>
-          <a>About Page</a>
+          <a>About Us</a>
+        </li>
+      </NavLink>
+      <NavLink
+        to="/contact"
+        className={({ isActive }) =>
+          isActive ? "text-green-500" : "text-gray-900"
+        }
+      >
+        <li>
+          <a>Contact Us</a>
         </li>
       </NavLink>
     </>
+    
   );
   return (
     <div className="navbar bg-base-100">
@@ -88,9 +99,9 @@ const Navbar = () => {
             {navOptions}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl gap-0">
+        <Link to={"/"} className="btn btn-ghost text-xl gap-0">
           Book <span className="text-green-500">Shop</span>
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-2 z-10">{navOptions}</ul>
