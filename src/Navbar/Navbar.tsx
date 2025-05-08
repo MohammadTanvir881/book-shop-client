@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const user = useAppSelector(useCurrentUser);
- 
+  console.log(user, "user for nav");
 
   const handleLogout = () => {
     dispatch(logout());
@@ -39,16 +39,30 @@ const Navbar = () => {
           <a>All Product </a>
         </li>
       </NavLink>
-      <NavLink
-        to="/dash-board"
-        className={({ isActive }) =>
-          isActive ? "text-green-500" : "text-gray-900"
-        }
-      >
-        <li>
-          <a>Dashboard </a>
-        </li>
-      </NavLink>
+      {user && user?.role === "admin" && (
+        <NavLink
+          to="/dash-board/states-management"
+          className={({ isActive }) =>
+            isActive ? "text-green-500" : "text-gray-900"
+          }
+        >
+          <li>
+            <a>Dashboard </a>
+          </li>
+        </NavLink>
+      )}
+      {user && user?.role === "user" && (
+        <NavLink
+          to="/dash-board/my-profile"
+          className={({ isActive }) =>
+            isActive ? "text-green-500" : "text-gray-900"
+          }
+        >
+          <li>
+            <a>Dashboard </a>
+          </li>
+        </NavLink>
+      )}
       <NavLink
         to="/about"
         className={({ isActive }) =>
@@ -70,7 +84,6 @@ const Navbar = () => {
         </li>
       </NavLink>
     </>
-    
   );
   return (
     <div className="navbar bg-base-100">

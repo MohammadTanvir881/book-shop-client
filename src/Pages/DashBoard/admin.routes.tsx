@@ -3,9 +3,15 @@ import CreateBooks from "../CreateBooks";
 import MyOrder from "../MyOrder";
 import MyProfile from "../MyProfile";
 import OrderManagementPage from "../OrderManagementPage";
+import AdminDashboard from "../Stat-Management/StateManagement";
 import UserManagement from "../UserManagement";
 
 export const adminPaths = [
+  {
+    name: "States-Management",
+    path: "states-management",
+    element: <AdminDashboard></AdminDashboard>,
+  },
   {
     name: "User-Management",
     path: "user-management",
