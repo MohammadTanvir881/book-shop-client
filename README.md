@@ -1,122 +1,132 @@
+Book Shop Website
+A full-featured online book store with user authentication, product management, and payment processing.
 
+🔗 Live Links
+Live Site: https://bookshop-client-v2.vercel.app/
 
-Book shop Website
-Live Demo : https://bookshop-client-v2.vercel.app/
+API/Server: https://book-shop-backend-woad.vercel.app/
 
-Overview
+✨ Core Features
+User authentication (login/registration with JWT)
 
-This project is a responsive bicycle e-commerce platform that allows users to browse bicycles, register accounts, place orders, and make payments. The platform features role-based authentication for users and admins, product management, order tracking, and payment integration.
+Book catalog with search and filtering
 
-Features
+Shopping cart functionality
 
+Order management system
+
+Admin dashboard for inventory management
+
+Payment integration (Stripe/PayPal)
+
+Responsive design for all devices
+
+Book rating and review system
+
+🛠️ Technologies Used
 Frontend
+React.js (v18.2.0)
 
-User Registration & Authentication
-
-Role-based authentication (User & Admin)
-
-Secure user registration and login with JWT authentication
-
-Routing & Pages
-
-Public Routes:
-
-Home Page: Overview of the platform
-
-All Products Page: Displays all available bicycles with sorting and filtering options
-
-Product Details Page: Detailed view of a specific bicycle
-
-About Us Page: Information about the platform/company
-
-Private Routes:
-
-Checkout Page: Only accessible to authenticated users
-
-Dashboard (Role-Based Access):
-
-User Role: View order history and account details
-
-Admin Role: Manage products, view orders, and oversee platform activities
-
-UI/UX Design
-
-Fully responsive and mobile-friendly design
-
-User-friendly navigation and clean interface
-
-Built according to the provided Figma design
-
-Backend (Module Pattern)
-
-Database (MongoDB)
-
-Users (Roles: User, Admin)
-
-Products (Attributes: name, brand, price, model, stock, etc.)
-
-Orders (Linked to user, product details, total price, status)
-
-Authentication
-
-User registration and login with JWT token management
-
-Secure password hashing
-
-Logout functionality
-
-Product Management
-
-CRUD operations for bicycles (Create, Read, Update, Delete)
-
-Order Management
-
-CRUD operations for orders
-
-Ensure stock levels before processing orders
-
-Payment Integration
-
- SSLCommerz
-
-Error Handling
-
-Consistent, user-friendly error messages for issues like invalid login, out-of-stock products, etc.
-
-Additional Backend Features
-
-API pagination for product listings and order retrieval
-
-Authentication middleware to protect private routes
-
-Tech Stack
-
-Frontend:
-
-React.js (with React Router)
-
-Tailwind CSS / Bootstrap (for styling)
-
-Redux / Context API (for state management)
-
-Backend:
-
-Node.js (Express.js)
-
-MongoDB (Mongoose ODM)
-
-JWT (for authentication)
-
-bcrypt (for password hashing)
-
-Deployment:
-
-Frontend: Vercel / Netlify
-
-Backend: Vercel 
-
-Database: MongoDB Atlas
+Redux Toolkit (v1.9.5)
 
 
+Tailwind CSS (v3.3.3)
 
+React Router (v6.15.0)
 
+SSLCOMMERZS
+
+Backend
+Node.js (v18.16.0)
+
+Express.js (v4.18.2)
+
+MongoDB (v6.0.6)
+
+Mongoose (v7.5.0)
+
+JSON Web Tokens (v9.0.1)
+
+Bcrypt.js (v2.4.3)
+
+DevOps
+AWS EC2 (Ubuntu 20.04)
+
+Nginx (v1.25.2)
+
+PM2 (v5.3.0)
+
+GitHub Actions (for CI/CD)
+
+🚀 Installation Guide
+Follow these steps to run the project locally:
+
+Prerequisites
+Node.js (v18.x or higher)
+
+MongoDB (v6.x or higher)
+
+Git
+
+Setup Instructions
+Clone the repository:
+
+bash
+git clone https://github.com/MohammadTanvir881/book-shop-client.git
+cd book-shop-website
+Install dependencies for both frontend and backend:
+
+bash
+# Frontend
+cd frontend
+npm install
+
+# Backend
+cd ../backend
+npm install
+Set up environment variables:
+Create a .env file in the backend directory with:
+
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+STRIPE_SECRET_KEY=your_stripe_test_key
+PORT=5000
+Start the development servers:
+
+bash
+# In backend directory
+npm run start:dev
+
+# In frontend directory (new terminal)
+npm run dev
+Access the application:
+
+Frontend: http://localhost:3000
+
+Backend API: http://localhost:5000
+
+🧗 Major Challenges
+Payment Integration: Implementing Stripe payment processing required handling sensitive data securely while maintaining a smooth user experience.
+
+Inventory Synchronization: Ensuring real-time stock updates across multiple concurrent users was challenging, solved with database transactions.
+
+Performance Optimization: Large book catalog required implementing pagination and efficient database queries to maintain fast load times.
+
+Responsive Design: Creating a consistent experience across all devices required careful CSS planning and extensive testing.
+
+🔮 Future Plans
+Implement book recommendation engine using machine learning
+
+Add audiobook and eBook support
+
+Develop mobile applications (React Native)
+
+Integrate with more payment gateways
+
+Add social sharing features
+
+Implement affiliate program functionality
+
+Develop advanced analytics dashboard for admin
+
+Add multilingual support
