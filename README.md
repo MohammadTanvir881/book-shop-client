@@ -1,12 +1,12 @@
 📚 Book Shop Website
 A full-featured, scalable online bookstore with user authentication, product management, and secure payment processing.
 
-🔗 Live Demo
-Live Site: http://bookshop-client-v2.vercel.app
+##🔗 Live Demo
+###Live Site: http://bookshop-client-v2.vercel.app
 
-API/Server: http://book-shop-backend-woad.vercel.app
+###API/Server: http://book-shop-backend-woad.vercel.app
 
-✨ Features
+##✨ Features
 🔐 User Authentication – JWT-based login & registration
 
 📚 Book Catalog – Search, filtering, and category browsing
@@ -23,7 +23,7 @@ API/Server: http://book-shop-backend-woad.vercel.app
 
 📱 Responsive Design – Optimized for all device sizes
 
-🛠️ Tech Stack
+##🛠️ Tech Stack
 🧩 Frontend
 React.js (v18.2.0)
 
@@ -35,7 +35,7 @@ React Router DOM (v6.15.0)
 
 SSLCOMMERZ (Payment gateway)
 
-⚙️ Backend
+##⚙️ Backend
 Node.js (v18.16.0)
 
 Express.js (v4.18.2)
@@ -48,10 +48,8 @@ JWT (v9.0.1) – Authentication
 
 Bcrypt.js (v2.4.3) – Password hashing
 
-🚀 DevOps
-GitHub Actions – CI/CD automation
 
-Deployment: Vercel (Frontend), Vercel / AWS (Backend)
+Deployment: Vercel (Frontend), Vercel (Backend)
 
 🚀 Getting Started
 ✅ Prerequisites
