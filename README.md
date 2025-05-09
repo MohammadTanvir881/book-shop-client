@@ -1,40 +1,40 @@
-Book Shop Website
-A full-featured online book store with user authentication, product management, and payment processing.
 
-🔗 Live Links
-Live Site: https://bookshop-client-v2.vercel.app/
+📚 Book Shop Website
+A full-featured, scalable online bookstore with user authentication, product management, and secure payment processing.
 
-API/Server: https://book-shop-backend-woad.vercel.app/
+🔗 Live Demo
+Live Site: bookshop-client-v2.vercel.app
 
-✨ Core Features
-User authentication (login/registration with JWT)
+API/Server: book-shop-backend-woad.vercel.app
 
-Book catalog with search and filtering
+✨ Features
+🔐 User authentication (JWT-based login & registration)
 
-Shopping cart functionality
+📚 Book catalog with search, filters, and categories
 
-Order management system
+🛒 Shopping cart and checkout functionality
 
-Admin dashboard for inventory management
+📦 Order management system
 
-Payment integration (Stripe/PayPal)
+🛠️ Admin dashboard for book inventory management
 
-Responsive design for all devices
+💳 Integrated payment gateways (SSLCommerz / Stripe)
 
-Book rating and review system
+💬 Book ratings and user reviews
 
-🛠️ Technologies Used
+📱 Fully responsive design for all screen sizes
+
+🛠️ Tech Stack
 Frontend
 React.js (v18.2.0)
 
 Redux Toolkit (v1.9.5)
 
-
 Tailwind CSS (v3.3.3)
 
-React Router (v6.15.0)
+React Router DOM (v6.15.0)
 
-SSLCOMMERZS
+SSLCOMMERZ (payment gateway)
 
 Backend
 Node.js (v18.16.0)
@@ -45,22 +45,14 @@ MongoDB (v6.0.6)
 
 Mongoose (v7.5.0)
 
-JSON Web Tokens (v9.0.1)
+JWT (v9.0.1) for authentication
 
-Bcrypt.js (v2.4.3)
+Bcrypt.js (v2.4.3) for password hashing
 
-DevOps
-AWS EC2 (Ubuntu 20.04)
 
-Nginx (v1.25.2)
+GitHub Actions for CI/CD automation
 
-PM2 (v5.3.0)
-
-GitHub Actions (for CI/CD)
-
-🚀 Installation Guide
-Follow these steps to run the project locally:
-
+🚀 Getting Started
 Prerequisites
 Node.js (v18.x or higher)
 
@@ -68,15 +60,19 @@ MongoDB (v6.x or higher)
 
 Git
 
-Setup Instructions
+Installation Steps
 Clone the repository:
 
 bash
+Copy
+Edit
 git clone https://github.com/MohammadTanvir881/book-shop-client.git
-cd book-shop-website
-Install dependencies for both frontend and backend:
+cd book-shop-client
+Install Dependencies:
 
 bash
+Copy
+Edit
 # Frontend
 cd frontend
 npm install
@@ -84,49 +80,65 @@ npm install
 # Backend
 cd ../backend
 npm install
-Set up environment variables:
-Create a .env file in the backend directory with:
+Set Environment Variables:
 
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-STRIPE_SECRET_KEY=your_stripe_test_key
+Create a .env file in the backend directory:
+
+env
+Copy
+Edit
 PORT=5000
-Start the development servers:
+NODE_ENV=production
+DATABASE_URL=
+BRCYPT_SALT_ROUNDS=12
+JWT_ACCESS_TOKEN_SECRET=
+JWT_REFRESH_TOKEN_SECRET=
+JWT_ACCESS_TOKEN_EXPIREIN=
+JWT_REFRESH_TOKEN_EXPIREIN=
+CLOUDINARY_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+//ssl Commerzs
+STORE_ID=
+STORE_PASSWORD=
+Run the Application:
 
 bash
-# In backend directory
+Copy
+Edit
+# Backend (in /backend)
 npm run start:dev
 
-# In frontend directory (new terminal)
+# Frontend (in /frontend)
 npm run dev
-Access the application:
+Access the App:
 
 Frontend: http://localhost:3000
 
 Backend API: http://localhost:5000
 
-🧗 Major Challenges
-Payment Integration: Implementing Stripe payment processing required handling sensitive data securely while maintaining a smooth user experience.
+⚠️ Challenges Faced
+Payment Integration: Ensured secure and smooth Stripe payment processing.
 
-Inventory Synchronization: Ensuring real-time stock updates across multiple concurrent users was challenging, solved with database transactions.
+Inventory Sync: Managed real-time stock updates using database transactions.
 
-Performance Optimization: Large book catalog required implementing pagination and efficient database queries to maintain fast load times.
+Performance Optimization: Applied pagination and query optimization to handle large datasets efficiently.
 
-Responsive Design: Creating a consistent experience across all devices required careful CSS planning and extensive testing.
+Responsive Design: Built a mobile-first layout using Tailwind and tested across devices.
 
-🔮 Future Plans
-Implement book recommendation engine using machine learning
+🔮 Roadmap / Future Enhancements
+🔍 Machine-learning-based book recommendation engine
 
-Add audiobook and eBook support
+🎧 Support for audiobooks and eBooks
 
-Develop mobile applications (React Native)
+📱 Native mobile apps using React Native
 
-Integrate with more payment gateways
+💳 Integration with additional payment gateways
 
-Add social sharing features
+🔗 Social sharing and referral features
 
-Implement affiliate program functionality
+🤝 Affiliate program system
 
-Develop advanced analytics dashboard for admin
+📊 Advanced analytics dashboard for admins
 
-Add multilingual support
+🌐 Multilingual support
