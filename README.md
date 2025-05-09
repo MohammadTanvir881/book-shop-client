@@ -3,9 +3,9 @@
 A full-featured, scalable online bookstore with user authentication, product management, and secure payment processing.
 
 🔗 Live Demo
-Live Site: bookshop-client-v2.vercel.app
+Live Site: http://bookshop-client-v2.vercel.app
 
-API/Server: book-shop-backend-woad.vercel.app
+API/Server: http://book-shop-backend-woad.vercel.app
 
 ✨ Features
 🔐 User authentication (JWT-based login & registration)
