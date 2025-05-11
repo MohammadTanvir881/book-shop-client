@@ -1,122 +1,129 @@
+📚 Book Shop Website
+A full-featured, scalable online bookstore with user authentication, product management, and secure payment processing.
+
+## 🔗 Live Demo
+### Live Site: https://book-shop-frontend-site.vercel.app
+
+### API/Server: https://book-shop-baeckend-site.vercel.app/
+
+## ✨ Features
+🔐 User Authentication – JWT-based login & registration
+
+📚 Book Catalog – Search, filtering, and category browsing
+
+🛒 Shopping Cart – Add, remove, and update cart items
+
+📦 Order Management – View and track user orders
+
+🛠️ Admin Dashboard – Inventory and user management
+
+💳 Payment Integration – Supports SSLCommerz and Stripe
+
+💬 Reviews & Ratings – Users can leave feedback on books
+
+📱 Responsive Design – Optimized for all device sizes
+
+## 🛠️ Tech Stack
+🧩 Frontend
+React.js (v18.2.0)
+
+Redux Toolkit (v1.9.5)
+
+Tailwind CSS (v3.3.3)
+
+React Router DOM (v6.15.0)
+
+SSLCOMMERZ (Payment gateway)
+
+## ⚙️ Backend
+Node.js (v18.16.0)
+
+Express.js (v4.18.2)
+
+MongoDB (v6.0.6)
+
+Mongoose (v7.5.0)
+
+JWT (v9.0.1) – Authentication
+
+Bcrypt.js (v2.4.3) – Password hashing
 
 
-Book shop Website
-Live Demo : https://bookshop-client-v2.vercel.app/
+Deployment: Vercel (Frontend), Vercel (Backend)
 
-Overview
+🚀 Getting Started
+✅ Prerequisites
+Node.js (v18.x or higher)
 
-This project is a responsive bicycle e-commerce platform that allows users to browse bicycles, register accounts, place orders, and make payments. The platform features role-based authentication for users and admins, product management, order tracking, and payment integration.
+MongoDB (v6.x or higher)
 
-Features
+Git
 
-Frontend
+🧰 Installation Steps
+1. Clone the Repository
+bash
+Copy
+Edit
+git clone https://github.com/MohammadTanvir881/book-shop-client.git
+cd book-shop-client
+2. Install Dependencies
+bash
+Copy
+Edit
+# Frontend
+cd frontend
+npm install
 
-User Registration & Authentication
+# Backend
+cd ../backend
+npm install
+3. Configure Environment Variables
+Create a .env file in the backend directory:
 
-Role-based authentication (User & Admin)
+env
+Copy
+Edit
+PORT=5000
+NODE_ENV=production
 
-Secure user registration and login with JWT authentication
+DATABASE_URL=
 
-Routing & Pages
+BRCYPT_SALT_ROUNDS=12
 
-Public Routes:
+JWT_ACCESS_TOKEN_SECRET=
+JWT_REFRESH_TOKEN_SECRET=
+JWT_ACCESS_TOKEN_EXPIREIN=
+JWT_REFRESH_TOKEN_EXPIREIN=
 
-Home Page: Overview of the platform
+# Cloudinary
+CLOUDINARY_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
 
-All Products Page: Displays all available bicycles with sorting and filtering options
+# SSLCommerz
+STORE_ID=
+STORE_PASSWORD=
+4. Run the Application
+bash
+Copy
+Edit
+# Start Backend
+cd backend
+npm run start:dev
 
-Product Details Page: Detailed view of a specific bicycle
+# Start Frontend (in a new terminal)
+cd frontend
+npm run dev
+🌐 Access the Application
+Frontend: http://localhost:3000
 
-About Us Page: Information about the platform/company
+Backend API: http://localhost:5000
 
-Private Routes:
+⚠️ Challenges Faced
+Payment Integration: Securely handled Stripe & SSLCommerz payments
 
-Checkout Page: Only accessible to authenticated users
+Inventory Sync: Ensured real-time updates using database transactions
 
-Dashboard (Role-Based Access):
+Performance: Implemented pagination and optimized MongoDB queries
 
-User Role: View order history and account details
-
-Admin Role: Manage products, view orders, and oversee platform activities
-
-UI/UX Design
-
-Fully responsive and mobile-friendly design
-
-User-friendly navigation and clean interface
-
-Built according to the provided Figma design
-
-Backend (Module Pattern)
-
-Database (MongoDB)
-
-Users (Roles: User, Admin)
-
-Products (Attributes: name, brand, price, model, stock, etc.)
-
-Orders (Linked to user, product details, total price, status)
-
-Authentication
-
-User registration and login with JWT token management
-
-Secure password hashing
-
-Logout functionality
-
-Product Management
-
-CRUD operations for bicycles (Create, Read, Update, Delete)
-
-Order Management
-
-CRUD operations for orders
-
-Ensure stock levels before processing orders
-
-Payment Integration
-
- SSLCommerz
-
-Error Handling
-
-Consistent, user-friendly error messages for issues like invalid login, out-of-stock products, etc.
-
-Additional Backend Features
-
-API pagination for product listings and order retrieval
-
-Authentication middleware to protect private routes
-
-Tech Stack
-
-Frontend:
-
-React.js (with React Router)
-
-Tailwind CSS / Bootstrap (for styling)
-
-Redux / Context API (for state management)
-
-Backend:
-
-Node.js (Express.js)
-
-MongoDB (Mongoose ODM)
-
-JWT (for authentication)
-
-bcrypt (for password hashing)
-
-Deployment:
-
-Frontend: Vercel / Netlify
-
-Backend: Vercel 
-
-Database: MongoDB Atlas
-
-
-
-
+Responsiveness: Built a mobile-first interface using Tailwind CSS

@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { authReducer } from "./Auth/authSlice";
 import { baseApi } from "../api/baseApi";
+import cartSlice from "./Cart/cartSlice";
 import {
   persistStore,
   persistReducer,
@@ -24,6 +25,7 @@ export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedReducer,
+    cart: cartSlice,
   },
   middleware: (grtDefaultMiddlewares) =>
     grtDefaultMiddlewares({

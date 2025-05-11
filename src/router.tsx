@@ -16,6 +16,8 @@ import PaymentSuccess from "./Pages/PaymentSuccess";
 import PaymentFailed from "./Pages/PaymentFailed";
 import PrivateRoute from "./Pages/DashBoard/PrivateRoute";
 import ContactUs from "./Pages/ContactUs/ContactUs";
+import CartPage from "./Pages/CartPage/CartPage";
+import StaticCartPage from "./Pages/CartPage/CartPage";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,15 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         element: <ContactUs></ContactUs>,
+      },
+      {
+        path: "/cart",
+        element: (
+          <PrivateRoute role={["user", "admin"]}>
+            {/* <CartPage></CartPage> */}
+            <StaticCartPage></StaticCartPage>
+          </PrivateRoute>
+        ),
       },
     ],
   },

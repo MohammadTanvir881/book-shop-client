@@ -2,6 +2,7 @@ import { logout, useCurrentUser } from "@/Redux/feature/Auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/feature/hook";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { FaShoppingCart } from "react-icons/fa"; // Import the cart icon
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -120,22 +121,30 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-2 z-10">{navOptions}</ul>
       </div>
       <div className="navbar-end">
-        <div className="px-2"></div>
-        {user?.userEmail ? (
-          <button className="bg-green-500 rounded-md" onClick={handleLogout}>
-            {" "}
-            <a className="btn bg-green-500 text-white hover:bg-green-400">
-              Logout
-            </a>
-          </button>
-        ) : (
-          <Link to="/login">
-            {" "}
-            <a className="btn bg-green-500 text-white hover:bg-green-400">
-              login
-            </a>
+        <div className="flex items-center gap-2">
+          {/* Cart icon with link */}
+          <Link to="/cart" className="btn btn-ghost btn-circle  text-green-500">
+            <div className="indicator">
+              <FaShoppingCart className="h-5 w-5" />
+              {/* You can add a badge for cart items count if needed */}
+              {/* <span className="badge badge-sm indicator-item">8</span> */}
+            </div>
           </Link>
-        )}
+
+          {user?.userEmail ? (
+            <button className="bg-green-500 rounded-md" onClick={handleLogout}>
+              <a className="btn bg-green-500 text-white hover:bg-green-400">
+                Logout
+              </a>
+            </button>
+          ) : (
+            <Link to="/login">
+              <a className="btn bg-green-500 text-white hover:bg-green-400">
+                login
+              </a>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { TCard } from "./HomePage/FeaturedProducts/FeaturedProducts";
 import { Link } from "react-router-dom";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useMemo, useState } from "react";
+import { Button } from "antd";
 
 const AllProductPage = () => {
   const ITEMS_PER_PAGE = 8;
@@ -120,7 +121,9 @@ const AllProductPage = () => {
                     </span>
                   </div>
 
-                  <p className="text-gray-500 text-xs sm:text-sm mb-2">By {card.author}</p>
+                  <p className="text-gray-500 text-xs sm:text-sm mb-2">
+                    By {card.author}
+                  </p>
 
                   <p className="text-gray-600 text-xs sm:text-sm line-clamp-2 mb-3 sm:mb-4">
                     {card.description}
@@ -160,7 +163,9 @@ const AllProductPage = () => {
                           d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
                         />
                       </svg>
-                      <span className="text-gray-700">Qty: {card.quantity}</span>
+                      <span className="text-gray-700">
+                        Qty: {card.quantity}
+                      </span>
                     </div>
 
                     <div className="col-span-2">
@@ -174,6 +179,7 @@ const AllProductPage = () => {
                         {card.inStock ? "In Stock" : "Out of Stock"}
                       </span>
                     </div>
+                   
                   </div>
 
                   <Link
@@ -245,7 +251,9 @@ const AllProductPage = () => {
               Page {currentPage} of {totalPages}
             </span>
             <button
-              onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
+              onClick={() =>
+                setCurrentPage(Math.min(currentPage + 1, totalPages))
+              }
               disabled={currentPage === totalPages}
               className="relative inline-flex items-center px-3 py-1.5 border border-gray-300 text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -255,9 +263,16 @@ const AllProductPage = () => {
           <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
               <p className="text-sm text-gray-700">
-                Showing <span className="font-medium">{(currentPage - 1) * ITEMS_PER_PAGE + 1}</span> to{" "}
+                Showing{" "}
                 <span className="font-medium">
-                  {Math.min(currentPage * ITEMS_PER_PAGE, data?.res?.length || 0)}
+                  {(currentPage - 1) * ITEMS_PER_PAGE + 1}
+                </span>{" "}
+                to{" "}
+                <span className="font-medium">
+                  {Math.min(
+                    currentPage * ITEMS_PER_PAGE,
+                    data?.res?.length || 0
+                  )}
                 </span>{" "}
                 of <span className="font-medium">{data?.res?.length || 0}</span>{" "}
                 results
@@ -304,7 +319,9 @@ const AllProductPage = () => {
                   )
                 )}
                 <button
-                  onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
+                  onClick={() =>
+                    setCurrentPage(Math.min(currentPage + 1, totalPages))
+                  }
                   disabled={currentPage === totalPages}
                   className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-xs sm:text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
